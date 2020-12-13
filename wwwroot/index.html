@@ -1,54 +1,33 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Todo List: A client for sample REST API in Azure App Service</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <title>Start CGC MC Server</title>
 </head>
 
-<body ng-app="todoApp" role="document">
+<body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed"
-                        data-toggle="collapse"
-                        data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#/Home">Azure App Service REST API Sample</a>
-            </div>
-        </div>
-    </div>
-
-    <br />
-
-    <div class="container" role="main">
-        <div class="row">
-            <div class="col-xs-10 col-xs-offset-1" style="background-color:azure">
-                <div class="page-header">
-                    <h1>Todo List</h1>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-10 col-xs-offset-1">
-                <div ng-view class="panel-body">
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-    <script src="https://code.angularjs.org/1.2.25/angular-route.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="app/scripts/app.js"></script>
-    <script src="app/scripts/todoListCtrl.js"></script>
-    <script src="app/scripts/todoListSvc.js"></script>
     <script type="text/javascript">
-        var apiEndpoint = ""; // URL of the REST API in Azure App Service http://<appname>.azurewebsites.net
+        function start() {
+			var xhttp = new XMLHttpRequest();
+  			xhttp.onreadystatechange = function() {
+    			if (this.readyState == 4 && this.status == 200) {
+      				document.getElementById("response").innerHTML = this.responseText;
+      			}
+      		};
+      		xhttp.open("POST", "https://35f99564-21b5-4810-84f6-41e88585f1aa.webhook.fc.azure-automation.net/webhooks?token=kMM%2fYhXTXZO9HJpiETds6YDC2YlD%2fRzso26rbMVzOP0%3d", true);
+  			xhttp.send();
+		}
+
     </script>
+
+
+	<h1>Start CGC MC Server</h1>
+
+	<p>Server Address: cgc.francecentral.cloudapp.azure.com</p>
+
+	<button type="button" onclick="start()">Start!</button>
+
+	<p id="response"></p>
+
 </body>
 </html>
