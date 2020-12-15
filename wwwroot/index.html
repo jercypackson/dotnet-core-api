@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Start CGC MC Server</title>
@@ -7,17 +7,24 @@
 <body>
 
     <script type="text/javascript">
+    	function getString(state) {
+		if (state === 0) return "UNSENT";
+		if (state === 1) return "OPENED";
+		if (state === 2) return "HEADERS_RECEIVED";
+		if (state === 3) return "LOADING";
+		if (state === 4) return "DONE";
+		
+		return "WTF?"
+	}
+	    
         function start() {
-			var xhttp = new XMLHttpRequest();
-  			xhttp.onreadystatechange = function() {
-    			if (this.readyState == 4 && this.status == 200) {
-      				document.getElementById("response").innerHTML = this.responseText;
-      			}
-      		};
-      		xhttp.open("POST", "https://35f99564-21b5-4810-84f6-41e88585f1aa.webhook.fc.azure-automation.net/webhooks?token=%2fd5JIV12d%2bxkbMlu3BBPKy6%2f%2bMQecT6Ty40ob%2bnkI%2bE%3d", true);
-  			xhttp.send();
+		var request = new XMLHttpRequest();
+		document.getElementById("response").innerHTML = request.readyState;
+		request.onreadystatechange = function () {
+			document.getElementById("response").innerHTML = request.readyState;
 		}
-
+		request.open("POST", "https://35f99564-21b5-4810-84f6-41e88585f1aa.webhook.fc.azure-automation.net/webhooks?token=pl7kOVZbBFif2tmCVuhN%2bIiEyjVYVWU3ou2Jhqfcw4Y%3d", true);
+		request.send();
     </script>
 
 
