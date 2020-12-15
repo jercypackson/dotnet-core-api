@@ -19,12 +19,13 @@
 	    
         function start() {
 		var request = new XMLHttpRequest();
-		document.getElementById("response").innerHTML = request.readyState;
+		document.getElementById("response").innerHTML = getString(request.readyState);
 		request.onreadystatechange = function () {
-			document.getElementById("response").innerHTML = request.readyState;
+			document.getElementById("response").innerHTML = getString(request.readyState);
 		}
 		request.open("POST", "https://35f99564-21b5-4810-84f6-41e88585f1aa.webhook.fc.azure-automation.net/webhooks?token=pl7kOVZbBFif2tmCVuhN%2bIiEyjVYVWU3ou2Jhqfcw4Y%3d", true);
 		request.send();
+	}
     </script>
 
 
